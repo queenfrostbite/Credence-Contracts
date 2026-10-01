@@ -16,9 +16,7 @@ extern crate std;
 // the production build.
 pub mod access_control;
 
-#[cfg(test)]
 mod batch;
-#[cfg(test)]
 pub use batch::{BatchBondParams, BatchBondResult};
 mod claims;
 mod cooldown;
@@ -3495,6 +3493,10 @@ mod test_early_exit_treasury_requirement {
 
 // [pre-broken on main] #[cfg(test)]
 // [pre-broken on main] mod test_bond_drift;
+
+/// Boundary and recovery coverage for `invariants.rs` (issue #1334).
+#[cfg(test)]
+mod test_invariants_boundary_recovery;
 
 /// Precision-loss regression tests for the early-exit penalty time-decay
 /// formula (dust-amount zero-penalty exploit).
